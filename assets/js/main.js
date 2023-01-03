@@ -44,7 +44,7 @@ strtbtnn.addEventListener('click',() => {
     Qestionboard.style.display = "block";
     refreasher.style.display = "block";
     let questionss = questions[current];
-    
+
     theq.innerText = questionss["question"];
     o1.innerText = questionss["choix1"];
     o2.innerText = questionss["choix2"];
@@ -100,7 +100,7 @@ else{
     }else if(score>3 && score<=5){
         S1.innerText = "Your Score is "+ score +"/10"
         S2.innerText =  "Your Score it Okey 👌"
-    }else if(score <= 6 && score <= 9){
+    }else if(score > 6 && score <= 9){
         S1.innerText = "Your Score is "+ score +"/10"
         S2.innerText =  "Your Score it Good 👍 "   
     }else if(score == 10){
@@ -108,6 +108,9 @@ else{
         S2.innerText =  "Your Score it Perfect 💯  "    
     }
     scoreboard.removeAttribute('style');
+    document.getElementById('scoreinp').value = score;
+    document.getElementById('ipadress').value = location.hostname;
+
 
 
 }
@@ -119,7 +122,6 @@ else{
 let setProgress = (percentage) => {
     progressBarFill.style.width = percentage + '%';
   };
-
 
 
 

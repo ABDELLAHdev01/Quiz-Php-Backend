@@ -1,6 +1,8 @@
 <?php
+require(realpath($_SERVER["DOCUMENT_ROOT"]) . '/quiz-php-backend/controller/User-controller.php');
+
 if(isset($_SESSION['ROLE'])) {
-    header('location: ../../Quiz.php');
+    header('location: ./Quiz.php');
 }
 ?>
 
@@ -12,6 +14,8 @@ if(isset($_SESSION['ROLE'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/doc/assets/docs.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/src/parsley.css" />
     <link rel="icon" href="assets/img/quiz.png" type="image/x-icon">
     <title>Quiz App</title>
 </head>
@@ -28,22 +32,25 @@ if(isset($_SESSION['ROLE'])) {
 
             <center>
                 <div id="login">
-                    <form action="./controller/User-controller.php" method="POST">
+                    
+                    <form data-parsley-validate action="./controller/User-controller.php" method="POST">
                         <label for="email">email:</label><br>
-                        <input type="text" id="email" name="email"><br>
+                        <input type="text" id="email" name="email" required data-parsley-type="email"><br>
                         <label for="password">Password:</label><br>
-                        <input type="password" id="password" name="password"><br><br>
+                        <input type="password" id="password" name="password" required data-parsley-length="[6, 10]"><br><br>
                         <button name="logsub" class="btn-log" type="submit">LOGIN</button>
                     </form>
                 </div>
                 <div id="singup">
-                    <form action="./controller/User-controller.php" method="POST">
+                    <form data-parsley-validate action="./controller/User-controller.php" method="POST">
+                    <label for="name">name:</label><br>
+                        <input type="text" id="name" name="name" required><br>
                         <label for="emailsingup">Email:</label><br>
-                        <input type="text" id="emailsingup" name="emailsingup"><br>
+                        <input type="text" id="emailsingup" name="emailsingup" required data-parsley-type="email"><br>
                         <label for="signuppassword">Password:</label><br>
-                        <input type="password" id="signuppassword" name="signuppassword"><br>
+                        <input type="password" id="signuppassword" name="signuppassword" required data-parsley-length="[6, 10]"><br>
                         <label for="rpassword">Repeat password:</label><br>
-                        <input type="password" id="rpassword" name="rpassword"><br><br>
+                        <input type="password" id="rpassword" name="rpassword" required data-parsley-length="[6, 10]"><br><br>
                         <button name="sigsub" class="btn-log" type="submit">SIGNUP</button>
                     </form>
                 </div>
@@ -77,7 +84,8 @@ if(isset($_SESSION['ROLE'])) {
         <div class="layer"></div>
         <div class="layer"></div>
         <div class="layer"></div>
-
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" ></script>
         <script src="./assets/js/index.js"></script>
 </body>
 

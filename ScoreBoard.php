@@ -1,10 +1,8 @@
 <?php
-
 require(realpath($_SERVER["DOCUMENT_ROOT"]) . '/quiz-php-backend/controller/User-controller.php');
+
 if (!isset($_SESSION['ROLE'])) {
     header('location: ./index.php');
-}
-if ($_SESSION['ROLE'] == "admin") {
 }
 
 ?>
@@ -32,20 +30,28 @@ if ($_SESSION['ROLE'] == "admin") {
 <div class="container1">
 
         <div class="quizbox">
-        
             <button type="submit" id="refreash" style="text-decoration: none;   color: white; background-color: blue;  border: 5px solid blue;
           border-radius: 50%; margin-left: 430px; cursor: pointer; display: none;">&#9747</button>
             <div id="quiz">
                 <h1>PHP Quizz</h1>
                 <div class="quizheader">
                 </div>
-                <div class="startgame" id="startquizz">
-                    <p class="bluebg">You can test your PHP skills with PHP Quiz.</p>
-                    <p class="bluebg">The test contains 10 questions and there is no time limit.</p>
-                    <p class="bluebg">The test is not official, it's just a nice way to see how much you know, or don't
-                        know, about PHP.</p>
-                    <center> <button id="startbtn" class="btn1" style="text-align: center;" onclick="">START</button>
-                    </center>
+                <center>
+                    <div style="font-size: 20px;">
+                <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th> </th>
+      <th>Score</th>
+    </tr>
+   </thead>
+   <tbody>
+    <?php  scoresController();?>
+  </tbody>
+</table>
+</div>
+</center>   
                 </div>
 
 
@@ -53,23 +59,8 @@ if ($_SESSION['ROLE'] == "admin") {
                 <div class="scoore" id="scores" style="display: none;">
                     <p class="sc-no" id="scno"></p>
                     <p class="sc-text" id="sct"></p>
-                    <p class="sc-text">Save Your Scoore by sending your name</p>
-                    <form action="./controller/User-controller.php" method="POST">
-                    <center>
-                  
-                    <input id="scoreinp" type="hidden" name="scoore">
-                    <input id="ipadress" type="hidden" name="ip">
-                    <input type="hidden" name="os">
-                    <input type="hidden" name="browser">
-                    <input type="hidden" name="date">
-                    
-                    <br>
-                   
-                    <button class="btn1" style="text-align: center;" type="submit" name="savescore">SAVE SCORE</button>
-                    <button  class="btn1" style="text-align: center;" type="submit" name="allscores">ALL SCORES</button>
-                    </center>
-                </form>
-
+                    <center><button><a style="text-decoration: none;" href="./pages/Answers.html">All
+                                Answers</a></button></center>
                 </div>
                 <!-- Q1  -->
                 <div class="disp" id="q1">
@@ -103,7 +94,7 @@ if ($_SESSION['ROLE'] == "admin") {
                     <center> <button id="subbtn" class="btn1" style="text-align: center; width: 50vh;"
                             onclick="">Next</button> </center>
                 </div>
-
+         
                 <hr>
                 <footer>
                     <p class="bluebg">Abdellah El GHOULAM</p>

@@ -146,7 +146,8 @@
   font-size: larger;
 }
 
-input {
+
+.answersss{
   padding-bottom: 3px;
   margin-bottom: 5px;
   font: inherit;
@@ -155,6 +156,9 @@ input {
   height: 1.15em;
   border: 0.15em solid currentColor;
   border-radius: 50%;
+}
+input {
+
 }
 
 .left {
